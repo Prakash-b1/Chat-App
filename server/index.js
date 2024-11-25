@@ -5,6 +5,8 @@ const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
+const path = require("path");
+
 require("dotenv").config();
 
 app.use(cors());
@@ -21,6 +23,10 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
+
+
+app.use(express.static(path.join(__dirname, "frontend/build")));
+
 
 app.get("/ping", (_req, res) => {
   return res.json({ msg: "Ping Successful" });
