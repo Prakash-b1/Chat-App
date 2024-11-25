@@ -26,8 +26,8 @@ export default function Contacts({ contacts, changeChat }) {
             <h3>Chat Up</h3>
           </div>
           <div className="contacts">
-            {contacts.map((contact, index) => {
-              return (
+          {Array.isArray(contacts) &&
+    contacts.map((contact, index) => {              return (
                 <div
                   key={contact._id}
                   className={`contact ${
